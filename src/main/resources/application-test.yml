@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dormitory_db
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  liquibase:
+    enabled: true
+  data:
+    redis:
+      host: localhost
+      port: 6370
+logging:
+  level:
+    by.bsuir: DEBUG
+    org.springframework: WARN
+
+app:
+  jwt:
+    secret: test-secret-key-for-integration-tests-minimum-32-chars
+    access-token-expiration: 1*60*1000
+    refresh-token-expiration: 2*60*1000
