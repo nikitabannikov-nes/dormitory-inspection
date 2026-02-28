@@ -11,7 +11,7 @@ spring:
           time_zone: UTC
         format_sql: true
   liquibase:
-    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    change-log: classpath:db/changelog/db.changelog-master.xml
     enabled: false
 
 server:
@@ -23,8 +23,8 @@ server:
 app:
   jwt:
     secret: ${JWT_SECRET:default-dev-secret-ket-change-in-production-minimum-32-characters}
-    access-token-expiration: 15*60*1000
-    refresh-token-expiration: 7*24*60*60*1000
+    access-token-expiration: 900000
+    refresh-token-expiration: 60480000
 
 springdoc:
   api-docs:
