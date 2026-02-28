@@ -12,7 +12,7 @@ spring:
         format_sql: true
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
-    enabled: false
+    enabled: true
 
 server:
   port: ${SERVER_PORT:8080}

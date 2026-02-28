@@ -9,10 +9,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "inspections")
 public class Inspection {
@@ -47,9 +51,9 @@ public class Inspection {
   @Column(nullable = false)
   private Byte kitchen;
 
-  @Column(nullable = false)
+  @Column(name = "room_a", nullable = false)
   private Byte roomA;
 
-  @Column(nullable = false)
+  @Column(name = "room_b", nullable = false)
   private Byte roomB;
 }

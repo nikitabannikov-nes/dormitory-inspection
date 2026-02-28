@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <include file="/db/changelog/migrations/001_create_blocks.xml"
+             relativeToChangelogFile="false"/>
+    <include file="/db/changelog/migrations/002_create_users.xml"
+             relativeToChangelogFile="false"/>
+    <include file="/db/changelog/migrations/003_create_inspections.xml"
+             relativeToChangelogFile="false"/>
+    <include file="/db/changelog/migrations/004_create_inspector_floors.xml"
+             relativeToChangelogFile="false"/>
+
+</databaseChangeLog>
