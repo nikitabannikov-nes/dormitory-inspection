@@ -9,4 +9,6 @@ import java.util.List;
 public interface InspectorFloorRepository extends JpaRepository<InspectorFloor, InspectorFloorId> {
 
   List<InspectorFloor> findAllByInspectorId(Long inspectorId);
+
+  void deleteAllByInspectorId(Long inspectorId);
 }

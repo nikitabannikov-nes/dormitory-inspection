@@ -39,6 +39,6 @@ POST http://localhost:8080/api/auth/signIn
 Content-Type: application/json
 
 {
-  "username": "julia",
-  "password": "secret23"
+  "username": "pasha",
+  "password": "secret123"
 }
