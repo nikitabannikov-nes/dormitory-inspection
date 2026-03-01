@@ -15,11 +15,11 @@ POST http://localhost:8080/api/auth/signUp
 Content-Type: application/json
 
 {
-  "username": "julia",
-  "fio": "Юлия Иванова",
-  "password": "secret23",
-  "passwordConfirm": "secret23",
-  "role": "ADMIN"
+  "username": "nesik",
+  "fio": "Nesik Иванова",
+  "password": "secret123",
+  "passwordConfirm": "secret123",
+  "role": "USER"
 }
 
 ### Вход

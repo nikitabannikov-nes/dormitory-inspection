@@ -1,0 +1,21 @@
+### Создать блок (ADMIN)
+POST http://localhost:8080/api/blocks
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIkMmEkMTAkcnJ6aHBoancwbmRxQ2F6bHpkTEh2ZUs4L1lOejRZRE9wTU5GLzdIQnI5U1ZVWDlkd1FOTUMiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NzIzNjc1ODksImV4cCI6MTc3MjM3MTE4OX0.cRivAX2OE5ZIJXi4w27oJjY_39Ehd8rhjvI8t4-9gCc
+Content-Type: application/json
+
+{
+  "number": 402,
+  "floor": 4
+}
+
+### Получить все
+GET http://localhost:8080/api/blocks
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIkMmEkMTAkcnJ6aHBoancwbmRxQ2F6bHpkTEh2ZUs4L1lOejRZRE9wTU5GLzdIQnI5U1ZVWDlkd1FOTUMiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NzIzNjc1ODksImV4cCI6MTc3MjM3MTE4OX0.cRivAX2OE5ZIJXi4w27oJjY_39Ehd8rhjvI8t4-9gCc
+
+### Получить по id
+GET http://localhost:8080/api/blocks/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIkMmEkMTAkLmFCbWtLbnVJZHBSemR1SGtqV0dJT2R5MEhFclp1NmFPWUlZZ0U5V3Q0cDFXZFdhT2E3eksiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3MjM2OTIyOCwiZXhwIjoxNzcyMzcyODI4fQ.Rio2cPKuhe_aaOg51AdgP-h_waZyuvpOmIHb2GlIbjs
+
+### Удалить
+DELETE http://localhost:8080/api/blocks/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIkMmEkMTAkcnJ6aHBoancwbmRxQ2F6bHpkTEh2ZUs4L1lOejRZRE9wTU5GLzdIQnI5U1ZVWDlkd1FOTUMiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NzIzNjc1ODksImV4cCI6MTc3MjM3MTE4OX0.cRivAX2OE5ZIJXi4w27oJjY_39Ehd8rhjvI8t4-9gCc
