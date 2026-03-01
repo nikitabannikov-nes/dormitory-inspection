@@ -1,0 +1,27 @@
+### Создать обход (INSPECTOR)
+POST http://localhost:8080/api/inspections
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXNoYSIsInJvbGUiOiJJTlNQRUNUT1IiLCJpYXQiOjE3NzIzODc2NTEsImV4cCI6MTc3MjM5MTI1MX0.g7IW5egBn9iVbBiRfMaT-i-4vlDRt2iaKm3Dtezndr8
+Content-Type: application/json
+
+{
+  "blockId": 2,
+  "date": "2026-03-01",
+  "shower": 4,
+  "toilet": 3,
+  "hall": 5,
+  "kitchen": 4,
+  "roomA": 3,
+  "roomB": 4
+}
+
+### Мои обходы
+GET http://localhost:8080/api/inspections/my
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdWxpYSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3MjM4NzgwOCwiZXhwIjoxNzcyMzkxNDA4fQ.EmOQZLQw3bwQMO18sfLi9tIrbnNgJbl0Fcslc3yNXxw
+
+### Обходы блока
+GET http://localhost:8080/api/inspections/block/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXNoYSIsInJvbGUiOiJJTlNQRUNUT1IiLCJpYXQiOjE3NzIzODc2NTEsImV4cCI6MTc3MjM5MTI1MX0.g7IW5egBn9iVbBiRfMaT-i-4vlDRt2iaKm3Dtezndr8
+
+### Все обходы (ADMIN)
+GET http://localhost:8080/api/inspections
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdWxpYSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3MjM4NzgwOCwiZXhwIjoxNzcyMzkxNDA4fQ.EmOQZLQw3bwQMO18sfLi9tIrbnNgJbl0Fcslc3yNXxw

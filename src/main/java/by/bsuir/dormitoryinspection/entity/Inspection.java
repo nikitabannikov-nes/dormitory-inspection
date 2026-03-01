@@ -27,7 +27,7 @@ public class Inspection {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "inspector_id")
-  private User user;
+  private User inspector;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "block_id")

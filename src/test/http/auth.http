@@ -10,7 +10,7 @@ Content-Type: application/json
   "role": "USER"
 }
 
-### Регистрация ROLE_ADMI
+### Регистрация ROLE_ADMIN
 POST http://localhost:8080/api/auth/signUp
 Content-Type: application/json
 
@@ -22,15 +22,23 @@ Content-Type: application/json
   "role": "USER"
 }
 
+### Регистрация ROLE_INSPECTOR
+POST http://localhost:8080/api/auth/signUp
+Content-Type: application/json
+
+{
+  "username": "pasha",
+  "fio": "Pasha Иванова",
+  "password": "secret123",
+  "passwordConfirm": "secret123",
+  "role": "INSPECTOR"
+}
+
 ### Вход
 POST http://localhost:8080/api/auth/signIn
 Content-Type: application/json
 
 {
-  "username": "nikita",
-  "password": "secret123"
+  "username": "julia",
+  "password": "secret23"
 }
-
-### Защищённый эндпоинт (вставь токен из ответа выше)
-GET http://localhost:8080/api/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuaWtpdGEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3MjM2NjE5NSwiZXhwIjoxNzcyMzY5Nzk1fQ.Oki4JjzY2DCpe83x4cF1k-rhfxNoCtyrQ7PV_yuVOlQ
