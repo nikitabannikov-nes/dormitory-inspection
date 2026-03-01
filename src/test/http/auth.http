@@ -1,0 +1,24 @@
+### Регистрация
+POST http://localhost:8080/api/auth/signUp
+Content-Type: application/json
+
+{
+  "username": "nikita",
+  "fio": "Никита Иванов",
+  "password": "secret123",
+  "passwordConfirm": "secret123",
+  "role": "USER"
+}
+
+### Вход
+POST http://localhost:8080/api/auth/signIn
+Content-Type: application/json
+
+{
+  "username": "nikita",
+  "password": "secret123"
+}
+
+### Защищённый эндпоинт (вставь токен из ответа выше)
+GET http://localhost:8080/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuaWtpdGEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3MjM2NjE5NSwiZXhwIjoxNzcyMzY5Nzk1fQ.Oki4JjzY2DCpe83x4cF1k-rhfxNoCtyrQ7PV_yuVOlQ

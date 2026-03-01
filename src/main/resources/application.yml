@@ -22,13 +22,18 @@ server:
 
 app:
   jwt:
-    secret: ${JWT_SECRET:default-dev-secret-ket-change-in-production-minimum-32-characters}
-    access-token-expiration: 900000
+    secret: ${JWT_SECRET:IuKwhNuks1JXyqy0No6Kiqdw3FSUZDHCPhLpXk4HEtU=}
+    access-token-expiration: 3600000
     refresh-token-expiration: 60480000
 
 springdoc:
   api-docs:
-    path: /api-docs
+    path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
     enabled: true
+
+logging:
+  level:
+    by.bsuir: DEBUG
+    org.springframework.security: DEBUG
