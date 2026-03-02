@@ -25,6 +25,10 @@ public class SecurityConfig {
             .sessionManagement((
                     session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             )
+            .exceptionHandling(ex -> ex
+                    .accessDeniedHandler(((request, response, accessDeniedException) -> {
+                      throw accessDeniedException;
+                    })))
             .authorizeHttpRequests(auth ->
                     auth.requestMatchers("/api/auth/**").permitAll()
                             .requestMatchers("/error").permitAll()
