@@ -3,6 +3,7 @@ package by.bsuir.dormitoryinspection.controller;
 import by.bsuir.dormitoryinspection.dto.request.BlockCreateDto;
 import by.bsuir.dormitoryinspection.dto.response.BlockDto;
 import by.bsuir.dormitoryinspection.service.BlockService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/blocks")
 @RequiredArgsConstructor
+@RequestMapping("/api/blocks")
+@SecurityRequirement(name = "bearerAuth")
 public class BlockController {
 
   private final BlockService blockService;

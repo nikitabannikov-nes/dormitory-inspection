@@ -3,6 +3,7 @@ package by.bsuir.dormitoryinspection.controller;
 import by.bsuir.dormitoryinspection.dto.request.InspectionCreateDto;
 import by.bsuir.dormitoryinspection.dto.response.InspectionDto;
 import by.bsuir.dormitoryinspection.service.InspectionService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,9 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/inspections")
 @RequiredArgsConstructor
+@RequestMapping("/api/inspections")
+@SecurityRequirement(name = "bearerAuth")
 public class InspectionController {
 
   private final InspectionService inspectionService;

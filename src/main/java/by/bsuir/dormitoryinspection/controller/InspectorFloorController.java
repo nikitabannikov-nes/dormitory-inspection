@@ -2,6 +2,7 @@ package by.bsuir.dormitoryinspection.controller;
 
 import by.bsuir.dormitoryinspection.dto.request.AssignFloorDto;
 import by.bsuir.dormitoryinspection.service.InspectorFloorService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,8 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users/{id}/floors")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
+@RequestMapping("/api/users/{id}/floors")
 public class InspectorFloorController {
 
   private final InspectorFloorService inspectorFloorService;

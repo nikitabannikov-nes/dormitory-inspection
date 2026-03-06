@@ -15,11 +15,11 @@ POST http://localhost:8080/api/auth/signUp
 Content-Type: application/json
 
 {
-  "username": "nesik",
-  "fio": "Nesik Иванова",
+  "username": "leha",
+  "fio": "Leha Иванова",
   "password": "secret123",
   "passwordConfirm": "secret123",
-  "role": "USER"
+  "role": "ADMIN"
 }
 
 ### Регистрация ROLE_INSPECTOR
@@ -39,6 +39,6 @@ POST http://localhost:8080/api/auth/signIn
 Content-Type: application/json
 
 {
-  "username": "pasha",
+  "username": "leha",
   "password": "secret123"
 }

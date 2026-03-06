@@ -1,10 +1,10 @@
 ### Назначить инспектору этажи (ADMIN)
-POST http://localhost:8080/api/users/4/floors
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdWxpYSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3MjM5NDkxMywiZXhwIjoxNzcyMzk4NTEzfQ.J9dINnzO4Cl5zp_4X7eMQRDk4Kgo7l6D6ohgrhZtJJc
+POST http://localhost:8080/api/users/1/floors
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIkMmEkMTAkd2hCaDJLQTZTN3U5Q2prR2VTS2RTdUJadVBwU1RkM0pCbnBVRFB1czZ2T1F3Y1B6aC4ueTYiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NzI0NDc1MzMsImV4cCI6MTc3MjUzMzkzM30.AaNHkgLXtepWPRsJlCEutm-c3uNrCQ70tQB4eR9zQ_k
 Content-Type: application/json
 
 {
-  "floorNumbers": [3, 4, 5]
+  "floorNumbers": [9,13]
 }
 
 ### Посмотреть этажи инспектора

@@ -1,11 +1,11 @@
 ### Создать блок (ADMIN)
 POST http://localhost:8080/api/blocks
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIkMmEkMTAkcnJ6aHBoancwbmRxQ2F6bHpkTEh2ZUs4L1lOejRZRE9wTU5GLzdIQnI5U1ZVWDlkd1FOTUMiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NzIzNjc1ODksImV4cCI6MTc3MjM3MTE4OX0.cRivAX2OE5ZIJXi4w27oJjY_39Ehd8rhjvI8t4-9gCc
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIkMmEkMTAkd2hCaDJLQTZTN3U5Q2prR2VTS2RTdUJadVBwU1RkM0pCbnBVRFB1czZ2T1F3Y1B6aC4ueTYiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NzI0NDc1MzMsImV4cCI6MTc3MjUzMzkzM30.AaNHkgLXtepWPRsJlCEutm-c3uNrCQ70tQB4eR9zQ_k
 Content-Type: application/json
 
 {
-  "number": 402,
-  "floor": 4
+  "number": 1310,
+  "floor": 13
 }
 
 ### Получить все

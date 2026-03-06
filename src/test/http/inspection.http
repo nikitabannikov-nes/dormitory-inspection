@@ -1,6 +1,6 @@
 ### Создать обход (INSPECTOR)
 POST http://localhost:8080/api/inspections
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXNoYSIsInJvbGUiOiJJTlNQRUNUT1IiLCJpYXQiOjE3NzIzODc2NTEsImV4cCI6MTc3MjM5MTI1MX0.g7IW5egBn9iVbBiRfMaT-i-4vlDRt2iaKm3Dtezndr8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsZWhhIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzcyNDQ3Njk5LCJleHAiOjE3NzI1MzQwOTl9.tcf_IzYyVHmXY-OeSrPQ7-EzMVUTfOxgkz3wOSwKwEg
 Content-Type: application/json
 
 {
