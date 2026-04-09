@@ -15,6 +15,7 @@ import org.mapstruct.ReportingPolicy;
 public interface UserMapper {
 
   @Mapping(target = "blockId", source = "block.id")
+  @Mapping(target = "blockNumber", source = "block.number")
   UserDto toDto(User user);
 
   User toEntity(SignUpDto dto);

@@ -17,4 +17,5 @@ public class UserDto {
   private String fio;
   private Role role;
   private Long blockId;
+  private Integer blockNumber;
 }
