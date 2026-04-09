@@ -17,6 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
   private final JwtAuthenticationFilter jwtAuthenticationFilter;
+  private final RestAuthentificationEntryPoint restAuthenticationEntryPoint;
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -26,6 +27,7 @@ public class SecurityConfig {
                     session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             )
             .exceptionHandling(ex -> ex
+                    .authenticationEntryPoint(restAuthenticationEntryPoint)
                     .accessDeniedHandler(((request, response, accessDeniedException) -> {
                       throw accessDeniedException;
                     })))

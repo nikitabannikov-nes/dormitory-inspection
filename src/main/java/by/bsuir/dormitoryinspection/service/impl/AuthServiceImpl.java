@@ -34,9 +34,9 @@ public class AuthServiceImpl implements AuthService {
     User user = userMapper.toEntity(dto);
     user.setPassword(passwordEncoder.encode(dto.getPassword()));
 
-    userRepository.save(user);
+    User saved = userRepository.save(user);
 
-    return jwtService.generateToken(user.getPassword(), user.getRole());
+    return jwtService.generateToken(saved);
   }
 
   @Override
@@ -48,6 +48,6 @@ public class AuthServiceImpl implements AuthService {
       throw new IllegalArgumentException("Invalid password");
     }
 
-    return jwtService.generateToken(user.getUsername(), user.getRole());
+    return jwtService.generateToken(user);
   }
 }

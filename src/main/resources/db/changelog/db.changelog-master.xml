@@ -13,5 +13,9 @@
              relativeToChangelogFile="false"/>
     <include file="/db/changelog/migrations/004_create_inspector_floors.xml"
              relativeToChangelogFile="false"/>
+    <include file="/db/changelog/migrations/005_seed_test_data.xml"
+             relativeToChangelogFile="false"/>
+    <include file="/db/changelog/migrations/006_seed_inspections.xml"
+             relativeToChangelogFile="false"/>
 
 </databaseChangeLog>

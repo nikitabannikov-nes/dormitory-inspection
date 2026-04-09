@@ -17,6 +17,7 @@ public class InspectionDto {
   private Long id;
   private Long blockId;
   private Long inspectorId;
+  private String inspectorFio;
   private LocalDate date;
   private LocalDateTime createdAt;
   private Byte shower;

@@ -2,7 +2,7 @@ package by.bsuir.dormitoryinspection.security;
 
 
 import by.bsuir.dormitoryinspection.dto.response.JwtDto;
-import by.bsuir.dormitoryinspection.enums.Role;
+import by.bsuir.dormitoryinspection.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -22,10 +22,13 @@ public class JwtService {
   @Value("${app.jwt.access-token-expiration}")
   private long expiration;
 
-  public JwtDto generateToken(String username, Role role) {
+  public JwtDto generateToken(User user) {
     String token = Jwts.builder()
-            .subject(username)
-            .claim("role", role.name())
+            .subject(user.getUsername())
+            .claim("role", user.getRole().name())
+            .claim("id", user.getId())
+            .claim("fio", user.getFio())
+            .claim("blockId", user.getBlock() != null ? user.getBlock().getId() : null)
             .issuedAt(new Date())
             .expiration(new Date(System.currentTimeMillis() + expiration))
             .signWith(getSigningKey())
@@ -39,6 +42,14 @@ public class JwtService {
 
   public String extractRole(String token) {
     return getClaims(token).get("role", String.class);
+  }
+
+  public Long extractId(String token) {
+    return getClaims(token).get("id", Long.class);
+  }
+
+  public Long extractBlockId(String token) {
+    return getClaims(token).get("blockId", Long.class);
   }
 
   public boolean validateToken(String token) {

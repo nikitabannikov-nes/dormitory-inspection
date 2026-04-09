@@ -3,13 +3,13 @@ package by.bsuir.dormitoryinspection.exception;
 import by.bsuir.dormitoryinspection.dto.response.ErrorDto;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.nio.file.AccessDeniedException;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
@@ -47,12 +47,6 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(Exception.class)
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
   public ErrorDto handleInternalServerError(Exception e) {
-    return new ErrorDto(500, "Internal server error");
+    return new ErrorDto(500, e.getClass().getSimpleName() + ": " + e.getMessage());
   }
-
-//  @ExceptionHandler(HttpClientErrorException.Unauthorized.class)
-//  @ResponseStatus(HttpStatus.UNAUTHORIZED)
-//  public ErrorDto handleUnauthorized(HttpClientErrorException.Unauthorized e) {
-//    return new ErrorDto(401, e.getMessage());
-//  }
 }

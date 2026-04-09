@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="005_seed_test_data" author="dev">
+
+        <!-- Блоки -->
+        <insert tableName="blocks">
+            <column name="number" value="101"/>
+            <column name="floor" value="1"/>
+        </insert>
+        <insert tableName="blocks">
+            <column name="number" value="102"/>
+            <column name="floor" value="1"/>
+        </insert>
+        <insert tableName="blocks">
+            <column name="number" value="201"/>
+            <column name="floor" value="2"/>
+        </insert>
+        <insert tableName="blocks">
+            <column name="number" value="202"/>
+            <column name="floor" value="2"/>
+        </insert>
+        <insert tableName="blocks">
+            <column name="number" value="301"/>
+            <column name="floor" value="3"/>
+        </insert>
+
+        <!-- Пользователи -->
+        <!-- ADMIN: admin / admin123 -->
+        <insert tableName="users">
+            <column name="username" value="admin"/>
+            <column name="fio" value="Администратов Админ Админович"/>
+            <column name="password" value="$2a$10$5F89JG/wsJmclPNIYTIzw.41beMW/fkj9tOXW696lY3xoxaNctp1W"/>
+            <column name="role" value="ADMIN"/>
+            <column name="block_id"/>
+        </insert>
+
+        <!-- INSPECTOR: inspector1 / inspector1 -->
+        <insert tableName="users">
+            <column name="username" value="inspector1"/>
+            <column name="fio" value="Иванов Иван Иванович"/>
+            <column name="password" value="$2a$10$kQxqmk3OyqPU1Y0CrfgwF.voKpbsYMFBmzj40e/ZUQYpLN6SHHXnG"/>
+            <column name="role" value="INSPECTOR"/>
+            <column name="block_id"/>
+        </insert>
+
+        <!-- USER: user1 / user1 -->
+        <insert tableName="users">
+            <column name="username" value="user1"/>
+            <column name="fio" value="Петров Пётр Петрович"/>
+            <column name="password" value="$2a$10$/4D8ONB8GfnJVhU5BPdB0ufdNzidYtJK6Cu5ZzdZm8V/ZzlBEGhYK"/>
+            <column name="role" value="USER"/>
+            <column name="block_id" value="1"/>
+        </insert>
+
+        <!-- Этажи инспектора -->
+        <insert tableName="inspector_floors">
+            <column name="inspector_id" value="2"/>
+            <column name="floor_number" value="1"/>
+        </insert>
+        <insert tableName="inspector_floors">
+            <column name="inspector_id" value="2"/>
+            <column name="floor_number" value="2"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>
