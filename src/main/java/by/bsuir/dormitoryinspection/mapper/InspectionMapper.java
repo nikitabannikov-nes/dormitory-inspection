@@ -13,6 +13,7 @@ import org.mapstruct.ReportingPolicy;
 public interface InspectionMapper {
 
   @Mapping(source = "block.id", target = "blockId")
+  @Mapping(source = "block.number", target = "blockNumber")
   @Mapping(source = "inspector.id", target = "inspectorId")
   @Mapping(source = "inspector.fio", target = "inspectorFio")
   InspectionDto toDto(Inspection inspection);

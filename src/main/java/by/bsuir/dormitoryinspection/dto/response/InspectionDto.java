@@ -16,6 +16,7 @@ public class InspectionDto {
 
   private Long id;
   private Long blockId;
+  private Integer blockNumber;
   private Long inspectorId;
   private String inspectorFio;
   private LocalDate date;
