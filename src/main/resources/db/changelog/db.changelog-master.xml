@@ -25,5 +25,7 @@
              relativeToChangelogFile="false"/>
     <include file="/db/changelog/migrations/010_alter_inspections_add_comment.xml"
              relativeToChangelogFile="false"/>
+    <include file="/db/changelog/migrations/011_seed_actual_data.xml"
+             relativeToChangelogFile="false"/>
 
 </databaseChangeLog>
