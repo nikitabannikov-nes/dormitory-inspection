@@ -14,4 +14,5 @@ public class BlockDto {
   private Long id;
   private Integer number;
   private Integer floor;
+  private Boolean hasRoomB;
 }

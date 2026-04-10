@@ -54,6 +54,9 @@ public class Inspection {
   @Column(name = "room_a", nullable = false)
   private Byte roomA;
 
-  @Column(name = "room_b", nullable = false)
+  @Column(name = "room_b")
   private Byte roomB;
+
+  @Column(columnDefinition = "text")
+  private String comment;
 }

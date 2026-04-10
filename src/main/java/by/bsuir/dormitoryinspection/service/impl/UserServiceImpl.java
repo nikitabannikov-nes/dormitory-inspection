@@ -6,6 +6,8 @@ import by.bsuir.dormitoryinspection.entity.Block;
 import by.bsuir.dormitoryinspection.entity.User;
 import by.bsuir.dormitoryinspection.mapper.UserMapper;
 import by.bsuir.dormitoryinspection.repository.BlockRepository;
+import by.bsuir.dormitoryinspection.repository.InspectionRepository;
+import by.bsuir.dormitoryinspection.repository.InspectorFloorRepository;
 import by.bsuir.dormitoryinspection.repository.UserRepository;
 import by.bsuir.dormitoryinspection.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
@@ -22,6 +24,8 @@ public class UserServiceImpl implements UserService {
 
   private final UserRepository userRepository;
   private final BlockRepository blockRepository;
+  private final InspectionRepository inspectionRepository;
+  private final InspectorFloorRepository inspectorFloorRepository;
   private final UserMapper userMapper;
 
   @Override
@@ -73,6 +77,8 @@ public class UserServiceImpl implements UserService {
     if (!userRepository.existsById(id)) {
       throw new EntityNotFoundException("User not found: " + id);
     }
+    inspectionRepository.nullifyInspectorByInspectorId(id);
+    inspectorFloorRepository.deleteAllByInspectorId(id);
     userRepository.deleteById(id);
   }
 }

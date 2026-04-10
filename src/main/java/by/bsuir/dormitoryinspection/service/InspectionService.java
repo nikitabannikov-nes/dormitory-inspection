@@ -14,4 +14,6 @@ public interface InspectionService {
   List<InspectionDto> getMyInspections(String inspectorUsername);
 
   List<InspectionDto> getAll();
+
+  void deleteById(Long id, String username);
 }

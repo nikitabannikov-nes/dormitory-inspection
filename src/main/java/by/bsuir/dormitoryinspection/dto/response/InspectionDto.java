@@ -27,4 +27,5 @@ public class InspectionDto {
   private Byte kitchen;
   private Byte roomA;
   private Byte roomB;
+  private String comment;
 }

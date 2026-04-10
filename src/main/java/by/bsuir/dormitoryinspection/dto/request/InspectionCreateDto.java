@@ -47,8 +47,9 @@ public class InspectionCreateDto {
   @Max(5)
   private Byte roomA;
 
-  @NotNull
   @Min(1)
   @Max(5)
   private Byte roomB;
+
+  private String comment;
 }

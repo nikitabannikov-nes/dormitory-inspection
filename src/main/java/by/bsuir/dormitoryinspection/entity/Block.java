@@ -24,4 +24,7 @@ public class Block {
 
   @Column(nullable = false)
   private Integer floor;
+
+  @Column(name = "has_room_b", nullable = false)
+  private Boolean hasRoomB;
 }

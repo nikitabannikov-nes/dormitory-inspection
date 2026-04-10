@@ -59,7 +59,8 @@ public class InspectionServiceImpl implements InspectionService {
     inspection.setHall(dto.getHall());
     inspection.setKitchen(dto.getKitchen());
     inspection.setRoomA(dto.getRoomA());
-    inspection.setRoomB(dto.getRoomB());
+    inspection.setRoomB(Boolean.TRUE.equals(block.getHasRoomB()) ? dto.getRoomB() : null);
+    inspection.setComment(dto.getComment());
 
     return inspectionMapper.toDto(inspectionRepository.save(inspection));
   }
@@ -91,5 +92,20 @@ public class InspectionServiceImpl implements InspectionService {
             .stream()
             .map(inspectionMapper::toDto)
             .toList();
+  }
+
+  @Override
+  public void deleteById(Long id, String username) {
+    Inspection inspection = inspectionRepository.findById(id)
+            .orElseThrow(() -> new EntityNotFoundException("Inspection not found: " + id));
+    User user = userRepository.findByUsername(username)
+            .orElseThrow(() -> new EntityNotFoundException("User not found"));
+    boolean isAdmin = user.getRole().name().equals("ADMIN");
+    boolean isOwner = inspection.getInspector() != null &&
+            inspection.getInspector().getId().equals(user.getId());
+    if (!isAdmin && !isOwner) {
+      throw new AccessDeniedException("Not allowed to delete this inspection");
+    }
+    inspectionRepository.deleteById(id);
   }
 }

@@ -17,5 +17,13 @@
              relativeToChangelogFile="false"/>
     <include file="/db/changelog/migrations/006_seed_inspections.xml"
              relativeToChangelogFile="false"/>
+    <include file="/db/changelog/migrations/007_seed_production_data.xml"
+             relativeToChangelogFile="false"/>
+    <include file="/db/changelog/migrations/008_alter_inspections_room_b_nullable.xml"
+             relativeToChangelogFile="false"/>
+    <include file="/db/changelog/migrations/009_alter_blocks_add_has_room_b.xml"
+             relativeToChangelogFile="false"/>
+    <include file="/db/changelog/migrations/010_alter_inspections_add_comment.xml"
+             relativeToChangelogFile="false"/>
 
 </databaseChangeLog>

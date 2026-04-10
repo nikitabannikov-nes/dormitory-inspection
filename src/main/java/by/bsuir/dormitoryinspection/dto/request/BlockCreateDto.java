@@ -22,4 +22,7 @@ public class BlockCreateDto {
   @Min(2)
   @Max(16)
   private Integer floor;
+
+  @NotNull
+  private Boolean hasRoomB;
 }

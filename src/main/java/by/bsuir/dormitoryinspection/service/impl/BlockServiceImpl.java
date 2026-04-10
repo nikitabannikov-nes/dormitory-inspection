@@ -5,24 +5,29 @@ import by.bsuir.dormitoryinspection.dto.response.BlockDto;
 import by.bsuir.dormitoryinspection.entity.Block;
 import by.bsuir.dormitoryinspection.mapper.BlockMapper;
 import by.bsuir.dormitoryinspection.repository.BlockRepository;
+import by.bsuir.dormitoryinspection.repository.InspectionRepository;
+import by.bsuir.dormitoryinspection.repository.UserRepository;
 import by.bsuir.dormitoryinspection.service.BlockService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class BlockServiceImpl implements BlockService {
 
   private final BlockRepository blockRepository;
+  private final InspectionRepository inspectionRepository;
+  private final UserRepository userRepository;
   private final BlockMapper blockMapper;
 
   @Override
   public List<BlockDto> getAll() {
-    return blockRepository
-            .findAll()
+    return blockRepository.findAll()
             .stream()
             .map(blockMapper::toDto)
             .toList();
@@ -49,6 +54,8 @@ public class BlockServiceImpl implements BlockService {
     if (!blockRepository.existsById(id)) {
       throw new EntityNotFoundException("Block not found: " + id);
     }
+    inspectionRepository.deleteAllByBlockId(id);
+    userRepository.nullifyBlockByBlockId(id);
     blockRepository.deleteById(id);
   }
 }
