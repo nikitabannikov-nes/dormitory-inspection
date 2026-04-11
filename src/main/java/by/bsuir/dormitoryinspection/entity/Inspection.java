@@ -39,19 +39,19 @@ public class Inspection {
   @Column(nullable = false)
   private LocalDateTime createdAt;
 
-  @Column(nullable = false)
+  @Column
   private Byte shower;
 
-  @Column(nullable = false)
+  @Column
   private Byte toilet;
 
-  @Column(nullable = false)
+  @Column
   private Byte hall;
 
-  @Column(nullable = false)
+  @Column
   private Byte kitchen;
 
-  @Column(name = "room_a", nullable = false)
+  @Column(name = "room_a")
   private Byte roomA;
 
   @Column(name = "room_b")

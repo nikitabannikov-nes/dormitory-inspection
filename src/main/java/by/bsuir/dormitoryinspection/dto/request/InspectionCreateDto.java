@@ -22,27 +22,22 @@ public class InspectionCreateDto {
   @NotNull
   private LocalDate date;
 
-  @NotNull
   @Min(1)
   @Max(5)
   private Byte shower;
 
-  @NotNull
   @Min(1)
   @Max(5)
   private Byte toilet;
 
-  @NotNull
   @Min(1)
   @Max(5)
   private Byte hall;
 
-  @NotNull
   @Min(1)
   @Max(5)
   private Byte kitchen;
 
-  @NotNull
   @Min(1)
   @Max(5)
   private Byte roomA;
