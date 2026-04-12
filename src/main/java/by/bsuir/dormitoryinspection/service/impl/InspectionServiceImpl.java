@@ -18,6 +18,7 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -47,6 +48,14 @@ public class InspectionServiceImpl implements InspectionService {
             .collect(Collectors.toSet());
     if (!assignedFloors.contains(block.getFloor())) {
       throw new AccessDeniedException("Inspector is not assigned to floor " + block.getFloor());
+    }
+
+    LocalDateTime startOfDay = LocalDate.now().atStartOfDay();
+    LocalDateTime startOfNextDay = startOfDay.plusDays(1);
+    if (inspectionRepository.existsByInspectorIdAndBlockIdAndCreatedAtBetween(
+            inspector.getId(), block.getId(), startOfDay, startOfNextDay)) {
+      throw new IllegalArgumentException(
+              "Inspector already has an inspection for block " + block.getId() + " today");
     }
 
     Inspection inspection = new Inspection();
