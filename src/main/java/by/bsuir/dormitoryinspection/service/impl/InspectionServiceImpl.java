@@ -55,7 +55,7 @@ public class InspectionServiceImpl implements InspectionService {
     if (inspectionRepository.existsByInspectorIdAndBlockIdAndCreatedAtBetween(
             inspector.getId(), block.getId(), startOfDay, startOfNextDay)) {
       throw new IllegalArgumentException(
-              "Inspector already has an inspection for block " + block.getId() + " today");
+              "Inspector already has an inspection for block " + block.getNumber() + " today");
     }
 
     Inspection inspection = new Inspection();
