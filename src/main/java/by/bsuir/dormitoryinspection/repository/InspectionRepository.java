@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface InspectionRepository extends JpaRepository<Inspection, Long> {
@@ -19,8 +19,8 @@ public interface InspectionRepository extends JpaRepository<Inspection, Long> {
 
   void deleteAllByBlockId(Long blockId);
 
-  boolean existsByInspectorIdAndBlockIdAndCreatedAtBetween(
-          Long inspectorId, Long blockId, LocalDateTime start, LocalDateTime end);
+  boolean existsByInspectorIdAndBlockIdAndDate(
+          Long inspectorId, Long blockId, LocalDate date);
 
   @Modifying
   @Query("UPDATE Inspection i SET i.inspector = null WHERE i.inspector.id = :inspectorId")
