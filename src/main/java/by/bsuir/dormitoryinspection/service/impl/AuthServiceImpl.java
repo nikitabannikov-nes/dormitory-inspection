@@ -23,16 +23,16 @@ public class AuthServiceImpl implements AuthService {
 
   @Override
   public JwtDto signUp(SignUpDto dto) {
-    if (!dto.getPassword().equals(dto.getPasswordConfirm())) {
+    if (!dto.getPassword().trim().equals(dto.getPasswordConfirm().trim())) {
       throw new IllegalArgumentException("Passwords do not match");
     }
 
-    if (userRepository.existsByUsername(dto.getUsername())) {
+    if (userRepository.existsByUsername(dto.getUsername().trim())) {
       throw new IllegalArgumentException("Username already taken");
     }
 
     User user = userMapper.toEntity(dto);
-    user.setPassword(passwordEncoder.encode(dto.getPassword()));
+    user.setPassword(passwordEncoder.encode(dto.getPassword().trim()));
 
     User saved = userRepository.save(user);
 
@@ -41,10 +41,10 @@ public class AuthServiceImpl implements AuthService {
 
   @Override
   public JwtDto signIn(SignInDto dto) {
-    User user = userRepository.findByUsername(dto.getUsername())
+    User user = userRepository.findByUsername(dto.getUsername().trim())
             .orElseThrow(() -> new IllegalArgumentException("Username not found"));
 
-    if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
+    if (!passwordEncoder.matches(dto.getPassword().trim(), user.getPassword())) {
       throw new IllegalArgumentException("Invalid password");
     }
 
