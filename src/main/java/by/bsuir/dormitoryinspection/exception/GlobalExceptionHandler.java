@@ -27,6 +27,12 @@ public class GlobalExceptionHandler {
     return new ErrorDto(400, e.getMessage());
   }
 
+  @ExceptionHandler(IllegalStateException.class)
+  @ResponseStatus(HttpStatus.CONFLICT)
+  public ErrorDto handleConflict(IllegalStateException e) {
+    return new ErrorDto(409, e.getMessage());
+  }
+
   @ExceptionHandler(MethodArgumentNotValidException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public ErrorDto handleBadRequest(MethodArgumentNotValidException e) {

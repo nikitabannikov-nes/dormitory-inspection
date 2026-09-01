@@ -77,7 +77,11 @@ public class UserServiceImpl implements UserService {
     if (!userRepository.existsById(id)) {
       throw new EntityNotFoundException("User not found: " + id);
     }
-    inspectionRepository.nullifyInspectorByInspectorId(id);
+    if (inspectionRepository.existsByInspectorId(id)) {
+      throw new IllegalStateException(
+              "Невозможно удалить пользователя: за ним закреплены обходы. "
+                      + "Сначала удалите или переназначьте связанные обходы.");
+    }
     inspectorFloorRepository.deleteAllByInspectorId(id);
     userRepository.deleteById(id);
   }
