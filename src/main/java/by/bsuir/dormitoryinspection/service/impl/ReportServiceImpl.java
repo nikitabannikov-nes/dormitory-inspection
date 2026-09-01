@@ -359,7 +359,7 @@ public class ReportServiceImpl implements ReportService {
   // ─── Вычисления ──────────────────────────────────────────────────────────
 
   private String fmt(Byte score) {
-    return score != null ? String.valueOf(score) : "";
+    return score != null ? String.valueOf(score) : "—";
   }
 
   private String calcAvg(Inspection i) {
@@ -370,7 +370,7 @@ public class ReportServiceImpl implements ReportService {
     if (i.getKitchen() != null) { sum += i.getKitchen(); cnt++; }
     if (i.getRoomA()   != null) { sum += i.getRoomA();   cnt++; }
     if (i.getRoomB()   != null) { sum += i.getRoomB();   cnt++; }
-    if (cnt == 0) return "";
+    if (cnt == 0) return "—";
     return BigDecimal.valueOf((double) sum / cnt)
         .setScale(1, RoundingMode.HALF_UP)
         .toString().replace('.', ',');
