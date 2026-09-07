@@ -1,5 +1,6 @@
 package by.bsuir.dormitoryinspection.service;
 
+import by.bsuir.dormitoryinspection.dto.request.AdminCreateUserDto;
 import by.bsuir.dormitoryinspection.dto.request.UserUpdateDto;
 import by.bsuir.dormitoryinspection.dto.response.UserDto;
 
@@ -12,6 +13,8 @@ public interface UserService {
   UserDto getByUsername(String username);
 
   List<UserDto> getAll();
+
+  UserDto createByAdmin(AdminCreateUserDto dto);
 
   UserDto update(Long id, UserUpdateDto dto);
 

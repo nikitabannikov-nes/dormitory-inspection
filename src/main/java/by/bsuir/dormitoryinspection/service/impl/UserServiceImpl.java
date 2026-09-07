@@ -1,9 +1,11 @@
 package by.bsuir.dormitoryinspection.service.impl;
 
+import by.bsuir.dormitoryinspection.dto.request.AdminCreateUserDto;
 import by.bsuir.dormitoryinspection.dto.request.UserUpdateDto;
 import by.bsuir.dormitoryinspection.dto.response.UserDto;
 import by.bsuir.dormitoryinspection.entity.Block;
 import by.bsuir.dormitoryinspection.entity.User;
+import by.bsuir.dormitoryinspection.enums.Role;
 import by.bsuir.dormitoryinspection.mapper.UserMapper;
 import by.bsuir.dormitoryinspection.repository.BlockRepository;
 import by.bsuir.dormitoryinspection.repository.InspectionRepository;
@@ -12,6 +14,7 @@ import by.bsuir.dormitoryinspection.repository.UserRepository;
 import by.bsuir.dormitoryinspection.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,11 +25,14 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService {
 
+  private static final String DEFAULT_FIO = "Без имени";
+
   private final UserRepository userRepository;
   private final BlockRepository blockRepository;
   private final InspectionRepository inspectionRepository;
   private final InspectorFloorRepository inspectorFloorRepository;
   private final UserMapper userMapper;
+  private final PasswordEncoder passwordEncoder;
 
   @Override
   @Transactional(readOnly = true)
@@ -54,6 +60,28 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  public UserDto createByAdmin(AdminCreateUserDto dto) {
+    String username = dto.getUsername().trim();
+    if (userRepository.existsByUsername(username)) {
+      throw new IllegalArgumentException("Username already taken");
+    }
+
+    User user = new User();
+    user.setUsername(username);
+    user.setPassword(passwordEncoder.encode(dto.getPassword()));
+    user.setFio(dto.getFio() != null && !dto.getFio().isBlank() ? dto.getFio().trim() : DEFAULT_FIO);
+    user.setRole(dto.getRole() != null ? dto.getRole() : Role.USER);
+
+    if (dto.getBlockId() != null) {
+      Block block = blockRepository.findById(dto.getBlockId())
+              .orElseThrow(() -> new EntityNotFoundException("Block not found: " + dto.getBlockId()));
+      user.setBlock(block);
+    }
+
+    return userMapper.toDto(userRepository.save(user));
+  }
+
+  @Override
   public UserDto update(Long id, UserUpdateDto dto) {
     User user = userRepository.findById(id)
             .orElseThrow(() -> new EntityNotFoundException("User not found: " + id));
@@ -77,11 +105,7 @@ public class UserServiceImpl implements UserService {
     if (!userRepository.existsById(id)) {
       throw new EntityNotFoundException("User not found: " + id);
     }
-    if (inspectionRepository.existsByInspectorId(id)) {
-      throw new IllegalStateException(
-              "Невозможно удалить пользователя: за ним закреплены обходы. "
-                      + "Сначала удалите или переназначьте связанные обходы.");
-    }
+    inspectionRepository.deleteAllByInspectorId(id);
     inspectorFloorRepository.deleteAllByInspectorId(id);
     userRepository.deleteById(id);
   }

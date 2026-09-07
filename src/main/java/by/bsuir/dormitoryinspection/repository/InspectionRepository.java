@@ -25,6 +25,8 @@ public interface InspectionRepository extends JpaRepository<Inspection, Long> {
 
   void deleteAllByBlockId(Long blockId);
 
+  void deleteAllByInspectorId(Long inspectorId);
+
   boolean existsByInspectorIdAndBlockIdAndDate(
           Long inspectorId, Long blockId, LocalDate date);
 

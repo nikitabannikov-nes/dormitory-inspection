@@ -1,5 +1,6 @@
 package by.bsuir.dormitoryinspection.controller;
 
+import by.bsuir.dormitoryinspection.dto.request.AdminCreateUserDto;
 import by.bsuir.dormitoryinspection.dto.request.UserUpdateDto;
 import by.bsuir.dormitoryinspection.dto.response.UserDto;
 import by.bsuir.dormitoryinspection.service.UserService;
@@ -11,6 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +48,13 @@ public class UserController {
   @ResponseStatus(HttpStatus.OK)
   public UserDto getById(@PathVariable Long id) {
     return userService.getById(id);
+  }
+
+  @PostMapping
+  @PreAuthorize("hasRole('ADMIN')")
+  @ResponseStatus(HttpStatus.CREATED)
+  public UserDto create(@Valid @RequestBody AdminCreateUserDto dto) {
+    return userService.createByAdmin(dto);
   }
 
   @PutMapping("/{id}")
