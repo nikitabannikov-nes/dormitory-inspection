@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
 
 public interface InspectionRepository extends JpaRepository<Inspection, Long> {
@@ -22,6 +23,8 @@ public interface InspectionRepository extends JpaRepository<Inspection, Long> {
   boolean existsByInspectorId(Long inspectorId);
 
   List<Inspection> findAllByBlock_Floor(Integer floor);
+
+  List<Inspection> findAllByBlock_FloorIn(Collection<Integer> floors);
 
   void deleteAllByBlockId(Long blockId);
 

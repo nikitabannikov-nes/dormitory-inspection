@@ -86,7 +86,15 @@ public class InspectionServiceImpl implements InspectionService {
   public List<InspectionDto> getMyInspections(String inspectorUsername) {
     User inspector = userRepository.findByUsername(inspectorUsername)
             .orElseThrow(() -> new EntityNotFoundException("User not found"));
-    return inspectionRepository.findAllByInspectorId(inspector.getId())
+    Set<Integer> assignedFloors = inspectorFloorRepository
+            .findAllByInspectorId(inspector.getId())
+            .stream()
+            .map(InspectorFloor::getFloorNumber)
+            .collect(Collectors.toSet());
+    if (assignedFloors.isEmpty()) {
+      return List.of();
+    }
+    return inspectionRepository.findAllByBlock_FloorIn(assignedFloors)
             .stream()
             .map(inspectionMapper::toDto)
             .toList();
