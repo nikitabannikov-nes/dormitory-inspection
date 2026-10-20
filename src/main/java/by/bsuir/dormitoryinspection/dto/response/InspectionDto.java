@@ -28,4 +28,5 @@ public class InspectionDto {
   private Byte roomA;
   private Byte roomB;
   private String comment;
+  private boolean editable;
 }

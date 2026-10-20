@@ -1,6 +1,7 @@
 package by.bsuir.dormitoryinspection.controller;
 
 import by.bsuir.dormitoryinspection.dto.request.InspectionCreateDto;
+import by.bsuir.dormitoryinspection.dto.request.InspectionUpdateDto;
 import by.bsuir.dormitoryinspection.dto.response.InspectionDto;
 import by.bsuir.dormitoryinspection.service.InspectionService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -54,6 +56,15 @@ public class InspectionController {
   @ResponseStatus(HttpStatus.OK)
   public List<InspectionDto> getByBlock(@PathVariable Long blockId) {
     return inspectionService.getByBlock(blockId);
+  }
+
+  @PutMapping("/{id}")
+  @PreAuthorize("hasAnyRole('INSPECTOR', 'ADMIN')")
+  @ResponseStatus(HttpStatus.OK)
+  public InspectionDto update(@PathVariable Long id,
+                              @Valid @RequestBody InspectionUpdateDto dto,
+                              Principal principal) {
+    return inspectionService.update(id, dto, principal.getName());
   }
 
   @DeleteMapping("/{id}")

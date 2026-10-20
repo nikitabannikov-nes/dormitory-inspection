@@ -1,6 +1,7 @@
 package by.bsuir.dormitoryinspection.service;
 
 import by.bsuir.dormitoryinspection.dto.request.InspectionCreateDto;
+import by.bsuir.dormitoryinspection.dto.request.InspectionUpdateDto;
 import by.bsuir.dormitoryinspection.dto.response.InspectionDto;
 
 import java.util.List;
@@ -8,6 +9,8 @@ import java.util.List;
 public interface InspectionService {
 
   InspectionDto create(InspectionCreateDto dto, String inspectorUsername);
+
+  InspectionDto update(Long id, InspectionUpdateDto dto, String username);
 
   List<InspectionDto> getByBlock(Long blockId);
 
